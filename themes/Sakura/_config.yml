@@ -1,10 +1,10 @@
 # site name
-prefixName: Blog
-siteName: 张振文
+prefixName: Hello!
+siteName: 张百万
 # favicon and site master avatar
 favicon: /images/favicon.ico
 avatar: /img/custom/avatar.jpg
-url: https://129.211.77.7
+url: https://www.zhenwen66.cn
 description: Live your life with passion! With some drive!
 cdn: https://cdn.jsdelivr.net/gh/ZhangZhenwen/cdn@1.0.0
 pjax: 1
