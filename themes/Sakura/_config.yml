@@ -6,13 +6,13 @@ favicon: /images/favicon.ico
 avatar: /img/custom/avatar.jpg
 url: https://129.211.77.7
 description: Live your life with passion! With some drive!
-cdn: https://cdn.jsdelivr.net/gh/ZhangZhenwen/cdn@1.1
+cdn: https://cdn.jsdelivr.net/gh/ZhangZhenwen/cdn@1.0.0
 pjax: 1
 # 1开启
 mathjax: 0
 
 notice: 个人博客刚刚创立，目前正在折腾中...
-lazyloadImg: https://cdn.jsdelivr.net/gh/ZhangZhenwen/cdn@1.1/img/loader/orange.progress-bar-stripe-loader.svg
+lazyloadImg: https://cdn.jsdelivr.net/gh/ZhangZhenwen/cdn@1.0.0/img/loader/orange.progress-bar-stripe-loader.svg
 
 menus:
   首页: { path: /, fa: fa-fort-awesome faa-shake }
@@ -47,7 +47,7 @@ homePageSortType: -1
 homeArticleShown: 10
 # 背景图片 更好的修改
 bg:
-  - https://cdn.jsdelivr.net/gh/ZhangZhenwen/cdn@1.1/img/cover/(3).jpg
+  - https://cdn.jsdelivr.net/gh/ZhangZhenwen/cdn@1.0.0/img/cover/(3).jpg
 
 
 # 背景图片样式 空 原图效果 filter-dim 阴影 filter-grid 横条 filter-dot 点点
