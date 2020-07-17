@@ -22,6 +22,9 @@
         ·</span>
         <%= date(post.date, 'YYYY-M-D') %><span class="bull">
         ·</span>
+        <span class="post-count"><%=wordcount(post.content) %>字</span>
+        <span class="bull">
+        ·</span>
       <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
   </div>
