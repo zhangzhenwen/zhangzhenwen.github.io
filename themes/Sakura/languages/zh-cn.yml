@@ -61,3 +61,7 @@ insight:
     img: https://cdn.jsdelivr.net/gh/ZhangZhenwen/cdn@1.0.0/img/banner/reading.jpg
 玩转hexo:
     img: https://cdn.jsdelivr.net/gh/ZhangZhenwen/cdn@1.0.0/img/banner/coding.jpg
+MySQL:
+    img: https://cdn.jsdelivr.net/gh/ZhangZhenwen/cdn@1.0.1/img/banner/MySQL.jpg
+数据库:
+    img: https://cdn.jsdelivr.net/gh/ZhangZhenwen/cdn@1.0.2/img/banner/database.jpg

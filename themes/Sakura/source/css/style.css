@@ -7632,7 +7632,7 @@ img[src*="#in-center"] {
 #banner_wave_1 {
     width:auto;
     height:65px;
-    background:url("https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wave1.png") repeat-x;
+    background:url("https://cdn.jsdelivr.net/gh/ZhangZhenwen/cdn@1.0.0/img/other/wave1.png") repeat-x;
     position:absolute;
     bottom:0;
     width:400%;
@@ -7645,7 +7645,7 @@ img[src*="#in-center"] {
 #banner_wave_2 {
     width:auto;
     height:80px;
-    background:url("https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wave2.png") repeat-x;
+    background:url("https://cdn.jsdelivr.net/gh/ZhangZhenwen/cdn@1.0.0/img/other/wave2.png") repeat-x;
     position:absolute;
     bottom:0;
     width:400%;

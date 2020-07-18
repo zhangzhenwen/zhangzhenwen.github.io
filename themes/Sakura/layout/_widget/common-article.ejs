@@ -4,7 +4,7 @@
 <% if (post.photos && post.photos.length){ %>
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(<%= post.photos[0] %>);" src="<%- theme.lazyloadImg%>" data-src="<%= post.photos[0] %>">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(<%= post.photos[0] %>)" src="<%- theme.lazyloadImg%>" data-src="<%= post.photos[0] %>">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
@@ -57,6 +57,9 @@
             </div>
           </div>
         </div>
+        <span>
+          这篇文章最后更新于 <%= updatedFommatTime(Date.now() - post.updated) %> 
+        </span>
         <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
         <footer class="post-footer">
           <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
@@ -129,6 +132,41 @@
     </main><!-- #main -->
   </div><!-- #primary -->
 </div>
+
+<%
+  function updatedFommatTime(updatedTime) {
+    let h;
+    let d;
+    let y;
+    let hs = '';
+    let ds = '';
+    let ys = '';
+    if (updatedTime > 3600000) {
+      updatedTime = parseInt(updatedTime / 3600000);
+    } else {
+      return '刚刚';
+    }
+
+    h = updatedTime % 24;
+    updatedTime = parseInt(updatedTime / 24);
+    d = updatedTime % 365;
+    updatedTime = parseInt(updatedTime / 365);
+    y = updatedTime;
+
+    if (h > 0) {
+      hs = h + '小时'
+    }
+
+    if (d > 0) {
+      ds = d + '天'
+    }
+
+    if (y > 0) {
+      ys = y + '年'
+    }
+
+    return ys + ds + hs;
+  } %>
 
 <% if (post.mathjax) { %>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML"></script>
