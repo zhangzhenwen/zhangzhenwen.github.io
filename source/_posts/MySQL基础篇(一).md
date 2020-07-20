@@ -13,7 +13,7 @@ tags:
  - 数据库
  - MySQL
 keywords: MySQL
-description: 记录学习 MySQL 的笔记。该篇是基础篇(一)的内容
+description: 记录学习 MySQL 的笔记。该篇是基础篇(一)的内容，关于基础架构。
 photos: https://i.loli.net/2020/07/18/LrUfeCFMNzoXyhi.jpg
 ---
 
