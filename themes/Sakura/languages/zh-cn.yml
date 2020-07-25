@@ -65,3 +65,7 @@ MySQL:
     img: https://cdn.jsdelivr.net/gh/ZhangZhenwen/cdn@1.0.1/img/banner/MySQL.jpg
 数据库:
     img: https://cdn.jsdelivr.net/gh/ZhangZhenwen/cdn@1.0.2/img/banner/database.jpg
+Linux:
+    img: https://cdn.jsdelivr.net/gh/ZhangZhenwen/cdn@1.0.3/img/banner/linux.jpg
+算法:
+    img: https://cdn.jsdelivr.net/gh/ZhangZhenwen/cdn@1.0.3/img/banner/algorithm.jpg
