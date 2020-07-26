@@ -69,3 +69,5 @@ Linux:
     img: https://cdn.jsdelivr.net/gh/ZhangZhenwen/cdn@1.0.3/img/banner/linux.jpg
 算法:
     img: https://cdn.jsdelivr.net/gh/ZhangZhenwen/cdn@1.0.3/img/banner/algorithm.jpg
+web:
+    img: https://cdn.jsdelivr.net/gh/ZhangZhenwen/cdn@1.0.0/img/banner/coding.jpg
