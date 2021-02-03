@@ -16,7 +16,7 @@ description:
 photos: https://i.loli.net/2020/07/25/7D8vxaQMlsbAYEZ.jpg
 ---
 
-## 文件处理命令
+## Linux 基础命令
 
 ### 命令格式
 
@@ -184,6 +184,8 @@ photos: https://i.loli.net/2020/07/25/7D8vxaQMlsbAYEZ.jpg
 
 ​				  -f  动态显示文件末尾内容
 
+
+
 ### 链接命令
 
 #### ln 生成链接文件
@@ -207,7 +209,7 @@ photos: https://i.loli.net/2020/07/25/7D8vxaQMlsbAYEZ.jpg
 
 
 
-## 权限管理命令
+### 权限管理命令
 
 #### 1、chmod 修改文件或目录权限
 
@@ -251,6 +253,8 @@ photos: https://i.loli.net/2020/07/25/7D8vxaQMlsbAYEZ.jpg
 
 ​						  -S 以 rwx 形式显示新建文件缺省权限
 
+
+
 ### 文件搜索命令
 
 #### 1、find 文件搜索
@@ -289,7 +293,167 @@ photos: https://i.loli.net/2020/07/25/7D8vxaQMlsbAYEZ.jpg
 
 语法：locate [文件名]
 
-#### 3、which 搜索命令所在位置
+#### 3、which 搜索命令所在位置及别名信息
+
+所在路径：/usr/bin/which
+
+语法：which 命令
+
+#### 4、whereis 搜索命令所在位置及帮助文档路径
+
+所在路径：/usr/bin/whereis
+
+语法：whereis 命令
+
+#### 5、grep 在文件中搜寻字串匹配的行
+
+所在路径：/bin/grep
+
+语法：grep -iv [指定字串] [文件]
+
+​					 -i 不区分大小写
+
+​					 -v 排除指定字串
 
 
+
+### 帮助命令
+
+#### 1、man 获得帮助信息
+
+英文：manual
+
+所在路径：/usr/bin/man
+
+语法：man [命令或配置文件]
+
+#### 2、help 获取 shell 内置命令的帮助信息
+
+所在路径：shell 内置命令
+
+语法：help [命令]
+
+
+
+### 用户管理命令
+
+#### 1、useradd 添加新用户
+
+所在路径：/usr/sbin/useradd
+
+权限：root
+
+语法：useradd 用户名
+
+#### 2、passwd 设置用户密码
+
+所在路径：/usr/bin/passwd
+
+语法：passwd 用户名
+
+#### 3、who 查看登录用户信息
+
+所在路径：/bin/who
+
+语法：who
+
+#### 4、w 查看登录用户详细信息
+
+所在路径：/usr/bin/w
+
+语法：w
+
+
+
+### 压缩解压命令
+
+#### 1、gzip 压缩文件
+
+所在路径：/bin/gzip
+
+语法：gzip [文件]
+
+#### 2、gunzip 解压 .gz 的压缩文件
+
+所在路径：/bin/gunzip
+
+语法：gunzip [压缩文件]
+
+#### 3、tar 打包目录
+
+所在路径：/bin/tar
+
+语法：tar [-zcf] [压缩后文件名] [目录]
+
+​					-c 打包
+
+​					-v 显示详细信息
+
+​					-f 指定文件名
+
+​					-z 打包同时压缩/解压缩
+
+​					-x 解包
+
+#### 4、zip 压缩文件或目录
+
+所在路径：/usr/bin/zip
+
+语法：zip [-r] [压缩后文件名] [文件或目录]
+
+​					-r 压缩目录
+
+#### 5、unzip 解压 .zip 文件
+
+所在路径：/usr/bin/unzip
+
+语法：unzip [压缩文件]
+
+#### 6、bzip2 压缩文件
+
+所在路径：/usr/bin/bzip2
+
+语法：bzip2 [-k] [文件]
+
+​						-k 保留原文件
+
+​			tar -xjf [文件]
+
+#### 7、bunzip2 解压 .bz2 文件
+
+所在路径：/usr/bin/bunzip2
+
+语法：bunzip2 [-k] [压缩文件]
+
+​							-k 保留原文件
+
+​			tar -xjf [压缩文件]
+
+
+
+### 网络命令
+
+#### 1、write 给用户发信息
+
+所在路径：/usr/bin/write
+
+语法：write 用户名
+
+​			ctrl + D 保存结束
+
+#### 2、wall 发广播信息
+
+英文：write all
+
+所在路径：/usr/bin/wall
+
+语法：wall [message]
+
+#### 3、ping 测试网络连通性
+
+所在路径：/bin/ping
+
+语法：ping [-c] ip地址
+
+​					  -c 指定发送次数
 
