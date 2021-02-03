@@ -1,0 +1,360 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Linux 基础命令 | Cody's House</title><meta name="keywords" content="Linux"><meta name="author" content="Cody"><meta name="copyright" content="Cody"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Linux 基础命令命令格式目录处理命令1、mkdir 创建新目录英文：make directories 所在路径：&#x2F;bin&#x2F;mkdir 权限：所有用户 语法：mkdir -p [目录名] ​                        -p 递归创建 2、cd 切换目录英文：change directories 所在路径：shell 内置命令 权限：所有用户 语法：cd [目标目录] 3、pw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 基础命令">
+<meta property="og:url" content="http://zhenwen66.cn/2020/07/23/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:site_name" content="Cody&#39;s House">
+<meta property="og:description" content="Linux 基础命令命令格式目录处理命令1、mkdir 创建新目录英文：make directories 所在路径：&#x2F;bin&#x2F;mkdir 权限：所有用户 语法：mkdir -p [目录名] ​                        -p 递归创建 2、cd 切换目录英文：change directories 所在路径：shell 内置命令 权限：所有用户 语法：cd [目标目录] 3、pw">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/07/25/7D8vxaQMlsbAYEZ.jpg">
+<meta property="article:published_time" content="2020-07-23T14:31:01.000Z">
+<meta property="article:modified_time" content="2021-02-03T13:07:41.183Z">
+<meta property="article:author" content="Cody">
+<meta property="article:tag" content="悦读">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/07/25/7D8vxaQMlsbAYEZ.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://zhenwen66.cn/2020/07/23/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?<script> var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?b1015c5381e5fb7a33fa78e10ff4aff6"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script>";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-02-03 21:07:41'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avater.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/07/25/7D8vxaQMlsbAYEZ.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Cody's House</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux 基础命令</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-07-23T14:31:01.000Z" title="发表于 2020-07-23 22:31:01">2020-07-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-02-03T13:07:41.183Z" title="更新于 2021-02-03 21:07:41">2021-02-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Linux-基础命令"><a href="#Linux-基础命令" class="headerlink" title="Linux 基础命令"></a>Linux 基础命令</h2><h3 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h3><h3 id="目录处理命令"><a href="#目录处理命令" class="headerlink" title="目录处理命令"></a>目录处理命令</h3><h4 id="1、mkdir-创建新目录"><a href="#1、mkdir-创建新目录" class="headerlink" title="1、mkdir 创建新目录"></a>1、mkdir 创建新目录</h4><p>英文：make directories</p>
+<p>所在路径：/bin/mkdir</p>
+<p>权限：所有用户</p>
+<p>语法：mkdir -p [目录名]</p>
+<p>​                        -p 递归创建</p>
+<h4 id="2、cd-切换目录"><a href="#2、cd-切换目录" class="headerlink" title="2、cd 切换目录"></a>2、cd 切换目录</h4><p>英文：change directories</p>
+<p>所在路径：shell 内置命令</p>
+<p>权限：所有用户</p>
+<p>语法：cd [目标目录]</p>
+<h4 id="3、pwd-显示当前目录"><a href="#3、pwd-显示当前目录" class="headerlink" title="3、pwd 显示当前目录"></a>3、pwd 显示当前目录</h4><p>英文：print working directory</p>
+<p>所在路径：/bin/pwd</p>
+<p>权限：所有用户</p>
+<p>语法：pwd</p>
+<h4 id="4、rmdir-删除空目录"><a href="#4、rmdir-删除空目录" class="headerlink" title="4、rmdir 删除空目录"></a>4、rmdir 删除空目录</h4><p>英文：remove empty directories</p>
+<p>所在路径：/bin/rmdir</p>
+<p>权限：所有用户</p>
+<p>语法：rmdir [目录名]</p>
+<h4 id="5、cp-复制文件或目录"><a href="#5、cp-复制文件或目录" class="headerlink" title="5、cp 复制文件或目录"></a>5、cp 复制文件或目录</h4><p>英文：copy</p>
+<p>所在路径：/bin/cp</p>
+<p>权限：所有用户</p>
+<p>语法：cp -rp [原文件或目录] [目标目录]</p>
+<p>​                  -r 复制目录</p>
+<p>​                  -p 保留文件属性</p>
+<h4 id="6、mv-剪切文件，改名"><a href="#6、mv-剪切文件，改名" class="headerlink" title="6、mv 剪切文件，改名"></a>6、mv 剪切文件，改名</h4><p>英文：move</p>
+<p>所在路径：/bin/mv</p>
+<p>权限：所有用户</p>
+<p>语法：mv [原文件或目录] [目标目录]</p>
+<ol start="7">
+<li><p>rm 删除文件</p>
+<p>英文：remove</p>
+<p>所在路径：/bin/rm</p>
+<p>权限：所有用户</p>
+<p>语法：rm -rf [文件或目录]</p>
+<p>​                   -r 删除目录</p>
+<p>​                   -f 强制执行</p>
+</li>
+</ol>
+<h3 id="文件处理命令"><a href="#文件处理命令" class="headerlink" title="文件处理命令"></a>文件处理命令</h3><h4 id="1、touch-创建空文件"><a href="#1、touch-创建空文件" class="headerlink" title="1、touch 创建空文件"></a>1、touch 创建空文件</h4><p>所在路径：/bin/touch</p>
+<p>权限：所有用户</p>
+<p>语法：touch [文件名]</p>
+<h4 id="2、cat-显示文件内容"><a href="#2、cat-显示文件内容" class="headerlink" title="2、cat 显示文件内容"></a>2、cat 显示文件内容</h4><p>所在路径：/bin/cat</p>
+<p>权限：所有用户</p>
+<p>语法：cat -n [文件名]</p>
+<p>​                  -n 显示行号</p>
+<h4 id="3、tac-显示文件内容（反向排列）"><a href="#3、tac-显示文件内容（反向排列）" class="headerlink" title="3、tac 显示文件内容（反向排列）"></a>3、tac 显示文件内容（反向排列）</h4><p>所在路径：/usr/bin/cat</p>
+<p>权限：所有用户</p>
+<p>语法：tac -n [文件名]</p>
+<p>​                  -n 显示行号</p>
+<h4 id="4、more-分页显示文件内容"><a href="#4、more-分页显示文件内容" class="headerlink" title="4、more 分页显示文件内容"></a>4、more 分页显示文件内容</h4><p>所在路径：/bin/more</p>
+<p>权限：所有用户</p>
+<p>语法：more [文件名]</p>
+<p>​            (空格) 或 f 下一页</p>
+<p>​            b                上一页</p>
+<p>​            (Enter)       换行</p>
+<p>​            q 或 Q        退出</p>
+<h4 id="5、less-分页显示文件内容（向上翻页）"><a href="#5、less-分页显示文件内容（向上翻页）" class="headerlink" title="5、less 分页显示文件内容（向上翻页）"></a>5、less 分页显示文件内容（向上翻页）</h4><p>所在路径：/bin/less</p>
+<p>权限：所有用户</p>
+<p>语法：less [文件名]</p>
+<h4 id="6、head-显示文件前几行"><a href="#6、head-显示文件前几行" class="headerlink" title="6、head 显示文件前几行"></a>6、head 显示文件前几行</h4><p>所在路径：/bin/head</p>
+<p>权限：所有用户</p>
+<p>语法：head -n 10 [文件名]</p>
+<p>​                      -n 指定行数</p>
+<h4 id="7、tail-显示文件后几行"><a href="#7、tail-显示文件后几行" class="headerlink" title="7、tail 显示文件后几行"></a>7、tail 显示文件后几行</h4><p>所在路径：/bin/tail</p>
+<p>权限：所有用户</p>
+<p>语法：tail -n 10 [文件名]</p>
+<p>​                  -n 指定行数</p>
+<p>​                  -f  动态显示文件末尾内容</p>
+<h3 id="链接命令"><a href="#链接命令" class="headerlink" title="链接命令"></a>链接命令</h3><h4 id="ln-生成链接文件"><a href="#ln-生成链接文件" class="headerlink" title="ln 生成链接文件"></a>ln 生成链接文件</h4><p>英文：link</p>
+<p>所在路径：/bin/ln</p>
+<p>权限：所以用户</p>
+<p>语法：ln -s [原文件] [目标文件]</p>
+<p>​                -s 创建软链接（快捷方式）</p>
+<p>硬连接特征</p>
+<ol>
+<li>cp -p + 同步更新</li>
+<li>通过 i 节点识别</li>
+<li>不能跨分区</li>
+<li>不能针对目录使用</li>
+</ol>
+<h3 id="权限管理命令"><a href="#权限管理命令" class="headerlink" title="权限管理命令"></a>权限管理命令</h3><h4 id="1、chmod-修改文件或目录权限"><a href="#1、chmod-修改文件或目录权限" class="headerlink" title="1、chmod 修改文件或目录权限"></a>1、chmod 修改文件或目录权限</h4><p>英文：change the permissions mode of a file</p>
+<p>所在路径：/bin/chmod</p>
+<p>权限：所有用户</p>
+<p>语法：chmod [{ugoa} {+-=} {rwx}] [文件或目录]</p>
+<p>​                         [mode = 421] [文件或目录]</p>
+<p>​                         -R 递归修改</p>
+<img src="https://i.loli.net/2020/07/24/3s5qGEh9zVWmHaA.png" style="zoom:80%;" />
+
+<h4 id="2、chown-修改文件或目录的所有者"><a href="#2、chown-修改文件或目录的所有者" class="headerlink" title="2、chown 修改文件或目录的所有者"></a>2、chown 修改文件或目录的所有者</h4><p>英文：change file ownership</p>
+<p>所在路径：/bin/chown</p>
+<p>权限：所有用户</p>
+<p>语法：chown [用户] [文件或目录]</p>
+<h4 id="3、chgrp-修改文件的所属组"><a href="#3、chgrp-修改文件的所属组" class="headerlink" title="3、chgrp 修改文件的所属组"></a>3、chgrp 修改文件的所属组</h4><p>英文：change file group ownership</p>
+<p>语法：chgrp [用户组] [文件或目录]</p>
+<h4 id="4、umask-显示、设置文件的缺省权限"><a href="#4、umask-显示、设置文件的缺省权限" class="headerlink" title="4、umask 显示、设置文件的缺省权限"></a>4、umask 显示、设置文件的缺省权限</h4><p>英文：the user file-creation mask</p>
+<p>路径：shell 内置命令</p>
+<p>语法：umask [-S]</p>
+<p>​                          -S 以 rwx 形式显示新建文件缺省权限</p>
+<h3 id="文件搜索命令"><a href="#文件搜索命令" class="headerlink" title="文件搜索命令"></a>文件搜索命令</h3><h4 id="1、find-文件搜索"><a href="#1、find-文件搜索" class="headerlink" title="1、find 文件搜索"></a>1、find 文件搜索</h4><p>语法：find [搜索范围] [匹配条件]</p>
+<p>​                    -name 根据名称</p>
+<p>​                    -iname （不区分大小写）</p>
+<p>​                    -size 根据大小 +n 大于 -n 小于 n 等于</p>
+<p>​                    -user 根据所有者</p>
+<p>​                    -group 根据所属组</p>
+<p>​                    -amin 访问时间</p>
+<p>​                    -cmin 文件属性</p>
+<p>​                    -mmin 文件内容</p>
+<p>​                    -a 两个条件同时满足</p>
+<p>​                    -o 两个条件满足一个</p>
+<p>​                    -type 根据文件类型</p>
+<p>​                    -inum 根据 i 节点</p>
+<p>​                    -exec/-ok [命令] {} ; 对搜索结果执行操作 （-ok 需要确认）</p>
+<h4 id="2、locate-文件资料库中查找文件"><a href="#2、locate-文件资料库中查找文件" class="headerlink" title="2、locate 文件资料库中查找文件"></a>2、locate 文件资料库中查找文件</h4><p>所在路径：/usr/bin/locate</p>
+<p>语法：locate [文件名]</p>
+<h4 id="3、which-搜索命令所在位置及别名信息"><a href="#3、which-搜索命令所在位置及别名信息" class="headerlink" title="3、which 搜索命令所在位置及别名信息"></a>3、which 搜索命令所在位置及别名信息</h4><p>所在路径：/usr/bin/which</p>
+<p>语法：which 命令</p>
+<h4 id="4、whereis-搜索命令所在位置及帮助文档路径"><a href="#4、whereis-搜索命令所在位置及帮助文档路径" class="headerlink" title="4、whereis 搜索命令所在位置及帮助文档路径"></a>4、whereis 搜索命令所在位置及帮助文档路径</h4><p>所在路径：/usr/bin/whereis</p>
+<p>语法：whereis 命令</p>
+<h4 id="5、grep-在文件中搜寻字串匹配的行"><a href="#5、grep-在文件中搜寻字串匹配的行" class="headerlink" title="5、grep 在文件中搜寻字串匹配的行"></a>5、grep 在文件中搜寻字串匹配的行</h4><p>所在路径：/bin/grep</p>
+<p>语法：grep -iv [指定字串] [文件]</p>
+<p>​                     -i 不区分大小写</p>
+<p>​                     -v 排除指定字串</p>
+<h3 id="帮助命令"><a href="#帮助命令" class="headerlink" title="帮助命令"></a>帮助命令</h3><h4 id="1、man-获得帮助信息"><a href="#1、man-获得帮助信息" class="headerlink" title="1、man 获得帮助信息"></a>1、man 获得帮助信息</h4><p>英文：manual</p>
+<p>所在路径：/usr/bin/man</p>
+<p>语法：man [命令或配置文件]</p>
+<h4 id="2、help-获取-shell-内置命令的帮助信息"><a href="#2、help-获取-shell-内置命令的帮助信息" class="headerlink" title="2、help 获取 shell 内置命令的帮助信息"></a>2、help 获取 shell 内置命令的帮助信息</h4><p>所在路径：shell 内置命令</p>
+<p>语法：help [命令]</p>
+<h3 id="用户管理命令"><a href="#用户管理命令" class="headerlink" title="用户管理命令"></a>用户管理命令</h3><h4 id="1、useradd-添加新用户"><a href="#1、useradd-添加新用户" class="headerlink" title="1、useradd 添加新用户"></a>1、useradd 添加新用户</h4><p>所在路径：/usr/sbin/useradd</p>
+<p>权限：root</p>
+<p>语法：useradd 用户名</p>
+<h4 id="2、passwd-设置用户密码"><a href="#2、passwd-设置用户密码" class="headerlink" title="2、passwd 设置用户密码"></a>2、passwd 设置用户密码</h4><p>所在路径：/usr/bin/passwd</p>
+<p>语法：passwd 用户名</p>
+<h4 id="3、who-查看登录用户信息"><a href="#3、who-查看登录用户信息" class="headerlink" title="3、who 查看登录用户信息"></a>3、who 查看登录用户信息</h4><p>所在路径：/bin/who</p>
+<p>语法：who</p>
+<h4 id="4、w-查看登录用户详细信息"><a href="#4、w-查看登录用户详细信息" class="headerlink" title="4、w 查看登录用户详细信息"></a>4、w 查看登录用户详细信息</h4><p>所在路径：/usr/bin/w</p>
+<p>语法：w</p>
+<h3 id="压缩解压命令"><a href="#压缩解压命令" class="headerlink" title="压缩解压命令"></a>压缩解压命令</h3><h4 id="1、gzip-压缩文件"><a href="#1、gzip-压缩文件" class="headerlink" title="1、gzip 压缩文件"></a>1、gzip 压缩文件</h4><p>所在路径：/bin/gzip</p>
+<p>语法：gzip [文件]</p>
+<h4 id="2、gunzip-解压-gz-的压缩文件"><a href="#2、gunzip-解压-gz-的压缩文件" class="headerlink" title="2、gunzip 解压 .gz 的压缩文件"></a>2、gunzip 解压 .gz 的压缩文件</h4><p>所在路径：/bin/gunzip</p>
+<p>语法：gunzip [压缩文件]</p>
+<h4 id="3、tar-打包目录"><a href="#3、tar-打包目录" class="headerlink" title="3、tar 打包目录"></a>3、tar 打包目录</h4><p>所在路径：/bin/tar</p>
+<p>语法：tar [-zcf] [压缩后文件名] [目录]</p>
+<p>​                    -c 打包</p>
+<p>​                    -v 显示详细信息</p>
+<p>​                    -f 指定文件名</p>
+<p>​                    -z 打包同时压缩/解压缩</p>
+<p>​                    -x 解包</p>
+<h4 id="4、zip-压缩文件或目录"><a href="#4、zip-压缩文件或目录" class="headerlink" title="4、zip 压缩文件或目录"></a>4、zip 压缩文件或目录</h4><p>所在路径：/usr/bin/zip</p>
+<p>语法：zip [-r] [压缩后文件名] [文件或目录]</p>
+<p>​                    -r 压缩目录</p>
+<h4 id="5、unzip-解压-zip-文件"><a href="#5、unzip-解压-zip-文件" class="headerlink" title="5、unzip 解压 .zip 文件"></a>5、unzip 解压 .zip 文件</h4><p>所在路径：/usr/bin/unzip</p>
+<p>语法：unzip [压缩文件]</p>
+<h4 id="6、bzip2-压缩文件"><a href="#6、bzip2-压缩文件" class="headerlink" title="6、bzip2 压缩文件"></a>6、bzip2 压缩文件</h4><p>所在路径：/usr/bin/bzip2</p>
+<p>语法：bzip2 [-k] [文件]</p>
+<p>​                        -k 保留原文件</p>
+<p>​            tar -xjf [文件]</p>
+<h4 id="7、bunzip2-解压-bz2-文件"><a href="#7、bunzip2-解压-bz2-文件" class="headerlink" title="7、bunzip2 解压 .bz2 文件"></a>7、bunzip2 解压 .bz2 文件</h4><p>所在路径：/usr/bin/bunzip2</p>
+<p>语法：bunzip2 [-k] [压缩文件]</p>
+<p>​                            -k 保留原文件</p>
+<p>​            tar -xjf [压缩文件]</p>
+<h3 id="网络命令"><a href="#网络命令" class="headerlink" title="网络命令"></a>网络命令</h3><h4 id="1、write-给用户发信息"><a href="#1、write-给用户发信息" class="headerlink" title="1、write 给用户发信息"></a>1、write 给用户发信息</h4><p>所在路径：/usr/bin/write</p>
+<p>语法：write 用户名</p>
+<p>​            ctrl + D 保存结束</p>
+<h4 id="2、wall-发广播信息"><a href="#2、wall-发广播信息" class="headerlink" title="2、wall 发广播信息"></a>2、wall 发广播信息</h4><p>英文：write all</p>
+<p>所在路径：/usr/bin/wall</p>
+<p>语法：wall [message]</p>
+<h4 id="3、ping-测试网络连通性"><a href="#3、ping-测试网络连通性" class="headerlink" title="3、ping 测试网络连通性"></a>3、ping 测试网络连通性</h4><p>所在路径：/bin/ping</p>
+<p>语法：ping [-c] ip地址</p>
+<p>​                      -c 指定发送次数</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Cody</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://zhenwen66.cn/2020/07/23/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/">http://zhenwen66.cn/2020/07/23/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://zhenwen66.cn" target="_blank">Cody's House</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%82%A6%E8%AF%BB/">悦读</a><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/07/25/7D8vxaQMlsbAYEZ.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/07/25/%E5%8D%81%E5%A4%A7%E7%BB%8F%E5%85%B8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"><img class="prev-cover" src="https://i.loli.net/2020/07/26/bwnM8dKmj6XL23c.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">十大经典排序算法</div></div></a></div><div class="next-post pull-right"><a href="/2020/07/23/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"><img class="next-cover" src="https://i.loli.net/2020/07/25/7D8vxaQMlsbAYEZ.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">正则表达式</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/07/21/MySQL基础篇-三/" title="MySQL 基础篇(三)"><img class="cover" src="https://i.loli.net/2020/07/25/KL1ZUSaCn3wJqrW.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-21</div><div class="title">MySQL 基础篇(三)</div></div></a></div><div><a href="/2020/07/20/MySQL基础篇-二/" title="MySQL 基础篇(二)"><img class="cover" src="https://i.loli.net/2020/07/21/qvoFrfQGd6bzlxn.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-20</div><div class="title">MySQL 基础篇(二)</div></div></a></div><div><a href="/2020/07/17/MySQL基础篇-一/" title="MySQL 基础篇(一)"><img class="cover" src="https://i.loli.net/2020/07/18/LrUfeCFMNzoXyhi.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-17</div><div class="title">MySQL 基础篇(一)</div></div></a></div><div><a href="/2020/07/16/个人博客正式成立！/" title="个人博客正式成立！"><img class="cover" src="http://qdjubyjub.bkt.clouddn.com/img/timg.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-16</div><div class="title">个人博客正式成立！</div></div></a></div><div><a href="/2020/07/25/十大经典排序算法/" title="十大经典排序算法"><img class="cover" src="https://i.loli.net/2020/07/26/bwnM8dKmj6XL23c.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-25</div><div class="title">十大经典排序算法</div></div></a></div><div><a href="/2020/07/16/手把手从零开始搭建自己的个人博客/" title="手把手从零开始搭建自己的个人博客"><img class="cover" src="https://i.loli.net/2020/07/17/iF628B4z1ydOsWk.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-16</div><div class="title">手把手从零开始搭建自己的个人博客</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avater.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Cody</div><div class="author-info__description">好少年光芒万丈</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ZhangZhenwen" target="_blank" title="Github"><i class="fab fa-github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">Linux 基础命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.1.</span> <span class="toc-text">命令格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.</span> <span class="toc-text">目录处理命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81mkdir-%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9B%AE%E5%BD%95"><span class="toc-number">1.2.1.</span> <span class="toc-text">1、mkdir 创建新目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81cd-%E5%88%87%E6%8D%A2%E7%9B%AE%E5%BD%95"><span class="toc-number">1.2.2.</span> <span class="toc-text">2、cd 切换目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81pwd-%E6%98%BE%E7%A4%BA%E5%BD%93%E5%89%8D%E7%9B%AE%E5%BD%95"><span class="toc-number">1.2.3.</span> <span class="toc-text">3、pwd 显示当前目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81rmdir-%E5%88%A0%E9%99%A4%E7%A9%BA%E7%9B%AE%E5%BD%95"><span class="toc-number">1.2.4.</span> <span class="toc-text">4、rmdir 删除空目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81cp-%E5%A4%8D%E5%88%B6%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95"><span class="toc-number">1.2.5.</span> <span class="toc-text">5、cp 复制文件或目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81mv-%E5%89%AA%E5%88%87%E6%96%87%E4%BB%B6%EF%BC%8C%E6%94%B9%E5%90%8D"><span class="toc-number">1.2.6.</span> <span class="toc-text">6、mv 剪切文件，改名</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">1.3.</span> <span class="toc-text">文件处理命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81touch-%E5%88%9B%E5%BB%BA%E7%A9%BA%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.1.</span> <span class="toc-text">1、touch 创建空文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81cat-%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="toc-number">1.3.2.</span> <span class="toc-text">2、cat 显示文件内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81tac-%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%EF%BC%88%E5%8F%8D%E5%90%91%E6%8E%92%E5%88%97%EF%BC%89"><span class="toc-number">1.3.3.</span> <span class="toc-text">3、tac 显示文件内容（反向排列）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81more-%E5%88%86%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9"><span class="toc-number">1.3.4.</span> <span class="toc-text">4、more 分页显示文件内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81less-%E5%88%86%E9%A1%B5%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%EF%BC%88%E5%90%91%E4%B8%8A%E7%BF%BB%E9%A1%B5%EF%BC%89"><span class="toc-number">1.3.5.</span> <span class="toc-text">5、less 分页显示文件内容（向上翻页）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81head-%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%89%8D%E5%87%A0%E8%A1%8C"><span class="toc-number">1.3.6.</span> <span class="toc-text">6、head 显示文件前几行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7%E3%80%81tail-%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E5%90%8E%E5%87%A0%E8%A1%8C"><span class="toc-number">1.3.7.</span> <span class="toc-text">7、tail 显示文件后几行</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.</span> <span class="toc-text">链接命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ln-%E7%94%9F%E6%88%90%E9%93%BE%E6%8E%A5%E6%96%87%E4%BB%B6"><span class="toc-number">1.4.1.</span> <span class="toc-text">ln 生成链接文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">1.5.</span> <span class="toc-text">权限管理命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81chmod-%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95%E6%9D%83%E9%99%90"><span class="toc-number">1.5.1.</span> <span class="toc-text">1、chmod 修改文件或目录权限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81chown-%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95%E7%9A%84%E6%89%80%E6%9C%89%E8%80%85"><span class="toc-number">1.5.2.</span> <span class="toc-text">2、chown 修改文件或目录的所有者</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81chgrp-%E4%BF%AE%E6%94%B9%E6%96%87%E4%BB%B6%E7%9A%84%E6%89%80%E5%B1%9E%E7%BB%84"><span class="toc-number">1.5.3.</span> <span class="toc-text">3、chgrp 修改文件的所属组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81umask-%E6%98%BE%E7%A4%BA%E3%80%81%E8%AE%BE%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E7%BC%BA%E7%9C%81%E6%9D%83%E9%99%90"><span class="toc-number">1.5.4.</span> <span class="toc-text">4、umask 显示、设置文件的缺省权限</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%90%9C%E7%B4%A2%E5%91%BD%E4%BB%A4"><span class="toc-number">1.6.</span> <span class="toc-text">文件搜索命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81find-%E6%96%87%E4%BB%B6%E6%90%9C%E7%B4%A2"><span class="toc-number">1.6.1.</span> <span class="toc-text">1、find 文件搜索</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81locate-%E6%96%87%E4%BB%B6%E8%B5%84%E6%96%99%E5%BA%93%E4%B8%AD%E6%9F%A5%E6%89%BE%E6%96%87%E4%BB%B6"><span class="toc-number">1.6.2.</span> <span class="toc-text">2、locate 文件资料库中查找文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81which-%E6%90%9C%E7%B4%A2%E5%91%BD%E4%BB%A4%E6%89%80%E5%9C%A8%E4%BD%8D%E7%BD%AE%E5%8F%8A%E5%88%AB%E5%90%8D%E4%BF%A1%E6%81%AF"><span class="toc-number">1.6.3.</span> <span class="toc-text">3、which 搜索命令所在位置及别名信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81whereis-%E6%90%9C%E7%B4%A2%E5%91%BD%E4%BB%A4%E6%89%80%E5%9C%A8%E4%BD%8D%E7%BD%AE%E5%8F%8A%E5%B8%AE%E5%8A%A9%E6%96%87%E6%A1%A3%E8%B7%AF%E5%BE%84"><span class="toc-number">1.6.4.</span> <span class="toc-text">4、whereis 搜索命令所在位置及帮助文档路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81grep-%E5%9C%A8%E6%96%87%E4%BB%B6%E4%B8%AD%E6%90%9C%E5%AF%BB%E5%AD%97%E4%B8%B2%E5%8C%B9%E9%85%8D%E7%9A%84%E8%A1%8C"><span class="toc-number">1.6.5.</span> <span class="toc-text">5、grep 在文件中搜寻字串匹配的行</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%AE%E5%8A%A9%E5%91%BD%E4%BB%A4"><span class="toc-number">1.7.</span> <span class="toc-text">帮助命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81man-%E8%8E%B7%E5%BE%97%E5%B8%AE%E5%8A%A9%E4%BF%A1%E6%81%AF"><span class="toc-number">1.7.1.</span> <span class="toc-text">1、man 获得帮助信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81help-%E8%8E%B7%E5%8F%96-shell-%E5%86%85%E7%BD%AE%E5%91%BD%E4%BB%A4%E7%9A%84%E5%B8%AE%E5%8A%A9%E4%BF%A1%E6%81%AF"><span class="toc-number">1.7.2.</span> <span class="toc-text">2、help 获取 shell 内置命令的帮助信息</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="toc-number">1.8.</span> <span class="toc-text">用户管理命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81useradd-%E6%B7%BB%E5%8A%A0%E6%96%B0%E7%94%A8%E6%88%B7"><span class="toc-number">1.8.1.</span> <span class="toc-text">1、useradd 添加新用户</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81passwd-%E8%AE%BE%E7%BD%AE%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81"><span class="toc-number">1.8.2.</span> <span class="toc-text">2、passwd 设置用户密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81who-%E6%9F%A5%E7%9C%8B%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7%E4%BF%A1%E6%81%AF"><span class="toc-number">1.8.3.</span> <span class="toc-text">3、who 查看登录用户信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81w-%E6%9F%A5%E7%9C%8B%E7%99%BB%E5%BD%95%E7%94%A8%E6%88%B7%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF"><span class="toc-number">1.8.4.</span> <span class="toc-text">4、w 查看登录用户详细信息</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E8%A7%A3%E5%8E%8B%E5%91%BD%E4%BB%A4"><span class="toc-number">1.9.</span> <span class="toc-text">压缩解压命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81gzip-%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6"><span class="toc-number">1.9.1.</span> <span class="toc-text">1、gzip 压缩文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81gunzip-%E8%A7%A3%E5%8E%8B-gz-%E7%9A%84%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6"><span class="toc-number">1.9.2.</span> <span class="toc-text">2、gunzip 解压 .gz 的压缩文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81tar-%E6%89%93%E5%8C%85%E7%9B%AE%E5%BD%95"><span class="toc-number">1.9.3.</span> <span class="toc-text">3、tar 打包目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81zip-%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95"><span class="toc-number">1.9.4.</span> <span class="toc-text">4、zip 压缩文件或目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81unzip-%E8%A7%A3%E5%8E%8B-zip-%E6%96%87%E4%BB%B6"><span class="toc-number">1.9.5.</span> <span class="toc-text">5、unzip 解压 .zip 文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6%E3%80%81bzip2-%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6"><span class="toc-number">1.9.6.</span> <span class="toc-text">6、bzip2 压缩文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7%E3%80%81bunzip2-%E8%A7%A3%E5%8E%8B-bz2-%E6%96%87%E4%BB%B6"><span class="toc-number">1.9.7.</span> <span class="toc-text">7、bunzip2 解压 .bz2 文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E5%91%BD%E4%BB%A4"><span class="toc-number">1.10.</span> <span class="toc-text">网络命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81write-%E7%BB%99%E7%94%A8%E6%88%B7%E5%8F%91%E4%BF%A1%E6%81%AF"><span class="toc-number">1.10.1.</span> <span class="toc-text">1、write 给用户发信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81wall-%E5%8F%91%E5%B9%BF%E6%92%AD%E4%BF%A1%E6%81%AF"><span class="toc-number">1.10.2.</span> <span class="toc-text">2、wall 发广播信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81ping-%E6%B5%8B%E8%AF%95%E7%BD%91%E7%BB%9C%E8%BF%9E%E9%80%9A%E6%80%A7"><span class="toc-number">1.10.3.</span> <span class="toc-text">3、ping 测试网络连通性</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/07/25/%E5%8D%81%E5%A4%A7%E7%BB%8F%E5%85%B8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="十大经典排序算法"><img src="https://i.loli.net/2020/07/26/bwnM8dKmj6XL23c.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="十大经典排序算法"/></a><div class="content"><a class="title" href="/2020/07/25/%E5%8D%81%E5%A4%A7%E7%BB%8F%E5%85%B8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="十大经典排序算法">十大经典排序算法</a><time datetime="2020-07-25T11:18:23.000Z" title="发表于 2020-07-25 19:18:23">2020-07-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/07/23/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" title="Linux 基础命令"><img src="https://i.loli.net/2020/07/25/7D8vxaQMlsbAYEZ.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux 基础命令"/></a><div class="content"><a class="title" href="/2020/07/23/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" title="Linux 基础命令">Linux 基础命令</a><time datetime="2020-07-23T14:31:01.000Z" title="发表于 2020-07-23 22:31:01">2020-07-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/07/23/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="正则表达式"><img src="https://i.loli.net/2020/07/25/7D8vxaQMlsbAYEZ.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="正则表达式"/></a><div class="content"><a class="title" href="/2020/07/23/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="正则表达式">正则表达式</a><time datetime="2020-07-23T14:31:01.000Z" title="发表于 2020-07-23 22:31:01">2020-07-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/07/21/MySQL%E5%9F%BA%E7%A1%80%E7%AF%87-%E4%B8%89/" title="MySQL 基础篇(三)"><img src="https://i.loli.net/2020/07/25/KL1ZUSaCn3wJqrW.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL 基础篇(三)"/></a><div class="content"><a class="title" href="/2020/07/21/MySQL%E5%9F%BA%E7%A1%80%E7%AF%87-%E4%B8%89/" title="MySQL 基础篇(三)">MySQL 基础篇(三)</a><time datetime="2020-07-20T16:50:33.000Z" title="发表于 2020-07-21 00:50:33">2020-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/07/20/MySQL%E5%9F%BA%E7%A1%80%E7%AF%87-%E4%BA%8C/" title="MySQL 基础篇(二)"><img src="https://i.loli.net/2020/07/21/qvoFrfQGd6bzlxn.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL 基础篇(二)"/></a><div class="content"><a class="title" href="/2020/07/20/MySQL%E5%9F%BA%E7%A1%80%E7%AF%87-%E4%BA%8C/" title="MySQL 基础篇(二)">MySQL 基础篇(二)</a><time datetime="2020-07-20T09:43:35.000Z" title="发表于 2020-07-20 17:43:35">2020-07-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Cody</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a href="http://www.beian.miit.gov.cn" target="_blank">闽ICP备20014964号</a><br> <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=35012502000123" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"> <img src="/img/备案图标.png">闽公网安备 35012502000123号</p></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    let initData = {
+      el: '#vcomment',
+      appId: 'eIPnwzcAPKEgqX2PdYhNT8MQ-gzGzoHsz',
+      appKey: 'sfGDeDsrIX9MiTw9AQWkJBPu',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: true,
+      path: window.location.pathname,
+    }
+
+    if (true) { 
+      initData.requiredFields= ('nick,mail'.split(','))
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
+    const valine = new Valine(initData)
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

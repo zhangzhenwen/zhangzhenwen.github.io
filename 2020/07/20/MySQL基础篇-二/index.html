@@ -1,0 +1,245 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MySQL 基础篇(二) | Cody's House</title><meta name="keywords" content="MySQL"><meta name="author" content="Cody"><meta name="copyright" content="Cody"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录学习 MySQL 的笔记。该篇是基础篇(二)的内容，关于日志系统。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL 基础篇(二)">
+<meta property="og:url" content="http://zhenwen66.cn/2020/07/20/MySQL%E5%9F%BA%E7%A1%80%E7%AF%87-%E4%BA%8C/index.html">
+<meta property="og:site_name" content="Cody&#39;s House">
+<meta property="og:description" content="记录学习 MySQL 的笔记。该篇是基础篇(二)的内容，关于日志系统。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/07/21/qvoFrfQGd6bzlxn.png">
+<meta property="article:published_time" content="2020-07-20T09:43:35.000Z">
+<meta property="article:modified_time" content="2021-02-03T13:11:00.067Z">
+<meta property="article:author" content="Cody">
+<meta property="article:tag" content="悦读">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/07/21/qvoFrfQGd6bzlxn.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://zhenwen66.cn/2020/07/20/MySQL%E5%9F%BA%E7%A1%80%E7%AF%87-%E4%BA%8C/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?<script> var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?b1015c5381e5fb7a33fa78e10ff4aff6"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script>";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-02-03 21:11:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><meta name="generator" content="Hexo 5.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="/img/avater.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2020/07/21/qvoFrfQGd6bzlxn.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Cody's House</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">MySQL 基础篇(二)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-07-20T09:43:35.000Z" title="发表于 2020-07-20 17:43:35">2020-07-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-02-03T13:11:00.067Z" title="更新于 2021-02-03 21:11:00">2021-02-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="日志系统：一条-SQL-更新语句是如何执行的？"><a href="#日志系统：一条-SQL-更新语句是如何执行的？" class="headerlink" title="日志系统：一条 SQL 更新语句是如何执行的？"></a>日志系统：一条 SQL 更新语句是如何执行的？</h2><p>首先，可以确定的说，查询语句的那一套流程，更新语句也是同样会走一遍。</p>
+<img src="https://i.loli.net/2020/07/18/et5VhQRyHr3UYXp.png" style="zoom: 33%;" />
+
+<p>与查询流程不一样的是，更新流程还涉及两个重要的日志模块，它们正是我们今天要讨论的主角：redo log（重做日志）和 binlog（归档日志）。</p>
+<h3 id="重要日志模块：redo-log-InnoDB"><a href="#重要日志模块：redo-log-InnoDB" class="headerlink" title="重要日志模块：redo log (InnoDB)"></a>重要日志模块：redo log (InnoDB)</h3><p>WAL 技术：Write-Ahead Logging 先写日志，再写磁盘。</p>
+<p>当有一条记录要更新时，InnoDB 引擎会先把记录写到 redo log 里面，并更新内存。到适当时候，将这个操作记录更新到磁盘里面。</p>
+<p>InnoDB 的 redo log 是固定大小的。例如一组4个文件，每个文件 1GB，就总共可以记录 4GB 内容。</p>
+<img src="https://i.loli.net/2020/07/20/PbyOGDBIMvNYRfZ.png" style="zoom:55%;" />
+
+<p>write pos：当前记录的位置，一边写一边后移，循环着写。</p>
+<p>check pos：当前要擦除的位置，往后移，循环的。擦除前要把记录更新到数据文件中。</p>
+<p>绿色部分就是 redo log 中还空着的部分，可以用来记录新的操作。当 write pos 追上 check pos，就不能执行新的操作，得擦除一些记录让 check pos 前进。</p>
+<p>crash-safe：保证即使数据库发生异常重启，之前提交的记录都不会丢失的能力。</p>
+<h3 id="重要的日志模块：binlog"><a href="#重要的日志模块：binlog" class="headerlink" title="重要的日志模块：binlog"></a>重要的日志模块：binlog</h3><p>redo log 是 InnoDB 引擎特有的日志，而 Server 层也有自己的日志，称为 binlog (归档日志)。</p>
+<p>binlog 日志只能用来归档，是没有 crash-safe 能力的。</p>
+<p>这两个日志有三个不同点：</p>
+<ol>
+<li>redo log 是 InnoDB 引擎特有的；binlog 是 MySQL 的 Server 层实现的，所有引擎都可以使用。</li>
+<li>redo log 是物理日志，记录的是“在某个数据页上做了什么修改”；binlog 是逻辑日志，记录的是这个语句的原始逻辑，比如“给 ID=2 这一行的 c 字段加 1 ”。</li>
+<li>redo log 是循环写的，空间固定会用完；binlog 是可以追加写入的。“追加写”是指 binlog 文件写到一定大小后会切换到下一个，并不会覆盖以前的日志。</li>
+</ol>
+<p>有了对这两个日志的概念性理解，我们再来看执行器和 InnoDB 引擎在执行这个简单的 update 语句时的内部流程。</p>
+<ol>
+<li>执行器先找引擎取 ID=2 这一行。ID 是主键，引擎直接用树搜索找到这一行。如果 ID=2 这一行所在的数据页本来就在内存中，就直接返回给执行器；否则，需要先从磁盘读入内存，然后再返回。</li>
+<li>执行器拿到引擎给的行数据，把这个值加上 1，比如原来是 N，现在就是 N+1，得到新的一行数据，再调用引擎接口写入这行新数据。</li>
+<li>引擎将这行新数据更新到内存中，同时将这个更新操作记录到 redo log 里面，此时 redo log 处于 prepare 状态。然后告知执行器执行完成了，随时可以提交事务。</li>
+<li>执行器生成这个操作的 binlog，并把 binlog 写入磁盘。</li>
+<li>执行器调用引擎的提交事务接口，引擎把刚刚写入的 redo log 改成提交（commit）状态，更新完成。</li>
+</ol>
+<img src="https://i.loli.net/2020/07/21/PSdXYanlkp7mBFo.png" style="zoom:55%;" />
+
+<p>浅色框是在 InnoDB 中执行的，深色框是在执行器中执行的。</p>
+<h3 id="两阶段提交"><a href="#两阶段提交" class="headerlink" title="两阶段提交"></a>两阶段提交</h3><p>redo log 的写入拆成了两个步骤：prepare 和 commit，这就是“两阶段提交”。为了让两份日志之间的逻辑一致。</p>
+<p>想要数据库恢复到之前某一时刻，你可能会这么做：</p>
+<ul>
+<li>首先，找到最近的一次全量备份，如果你运气好，可能就是昨天晚上的一个备份，从这个备份恢复到临时库</li>
+<li>然后，从备份的时间点开始，将备份的 binlog 依次取出来，重放到中午误删表之前的那个时刻。</li>
+</ul>
+<p>为什么日志需要“两阶段提交”。如果不使用“两阶段提交”会发生什么？</p>
+<ol>
+<li><p>先写 redo log 后写 binlog</p>
+<p>由于 redo log 和 binlog 是两个独立的逻辑，如果不用两阶段提交，假设在写完 redo log，binlog 还没写完的时候，MySQL 进程异常重启。由于 redo log 写完，系统崩溃，也能把数据恢复回来。</p>
+<p>但是 binlog 没写完就 crash 了，这时 binlog 没有这条更新的记录。之后备份日志，就没有这条语句。</p>
+<p>如果需要用这个 binlog 来恢复临时库的话，由于这个语句的 binlog 缺失，临时库就会少了这一次更新，与原库不同。</p>
+</li>
+<li><p>先写 binlog 后写 redo log</p>
+<p>如果在 binlog 写完之后 crash，由于 redo log 还没写，崩溃恢复以后这个事务无效，所以这一行的值并没有改变。但是 binlog 里面已经记录了这个改变的日志。所以，在之后用 binlog 来恢复的时候就多了一个事务出来，与原库的值不同。</p>
+</li>
+</ol>
+<p>如果不使用“两阶段提交”，那么数据库的状态就有可能和用它的日志恢复出来的库的状态不一致。</p>
+<p>当你需要扩容的时候，也就是需要再多搭建一些备库来增加系统的读能力的时候，现在常见的做法也是用全量备份加上应用 binlog 来实现的，这个“不一致”就会导致你的线上出现主从数据库不一致的情况。</p>
+<p>简单说，redo log 和 binlog 都可以用于表示事务的提交状态，而两阶段提交就是让这两个状态保持逻辑上的一致。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Cody</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://zhenwen66.cn/2020/07/20/MySQL%E5%9F%BA%E7%A1%80%E7%AF%87-%E4%BA%8C/">http://zhenwen66.cn/2020/07/20/MySQL%E5%9F%BA%E7%A1%80%E7%AF%87-%E4%BA%8C/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://zhenwen66.cn" target="_blank">Cody's House</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%82%A6%E8%AF%BB/">悦读</a><a class="post-meta__tags" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a><a class="post-meta__tags" href="/tags/MySQL/">MySQL</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/07/21/qvoFrfQGd6bzlxn.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/07/21/MySQL%E5%9F%BA%E7%A1%80%E7%AF%87-%E4%B8%89/"><img class="prev-cover" src="https://i.loli.net/2020/07/25/KL1ZUSaCn3wJqrW.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">MySQL 基础篇(三)</div></div></a></div><div class="next-post pull-right"><a href="/2020/07/17/MySQL%E5%9F%BA%E7%A1%80%E7%AF%87-%E4%B8%80/"><img class="next-cover" src="https://i.loli.net/2020/07/18/LrUfeCFMNzoXyhi.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">MySQL 基础篇(一)</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/07/21/MySQL基础篇-三/" title="MySQL 基础篇(三)"><img class="cover" src="https://i.loli.net/2020/07/25/KL1ZUSaCn3wJqrW.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-21</div><div class="title">MySQL 基础篇(三)</div></div></a></div><div><a href="/2020/07/17/MySQL基础篇-一/" title="MySQL 基础篇(一)"><img class="cover" src="https://i.loli.net/2020/07/18/LrUfeCFMNzoXyhi.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-17</div><div class="title">MySQL 基础篇(一)</div></div></a></div><div><a href="/2020/07/23/Linux基础命令/" title="Linux 基础命令"><img class="cover" src="https://i.loli.net/2020/07/25/7D8vxaQMlsbAYEZ.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-23</div><div class="title">Linux 基础命令</div></div></a></div><div><a href="/2020/07/16/个人博客正式成立！/" title="个人博客正式成立！"><img class="cover" src="http://qdjubyjub.bkt.clouddn.com/img/timg.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-16</div><div class="title">个人博客正式成立！</div></div></a></div><div><a href="/2020/07/25/十大经典排序算法/" title="十大经典排序算法"><img class="cover" src="https://i.loli.net/2020/07/26/bwnM8dKmj6XL23c.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-25</div><div class="title">十大经典排序算法</div></div></a></div><div><a href="/2020/07/16/手把手从零开始搭建自己的个人博客/" title="手把手从零开始搭建自己的个人博客"><img class="cover" src="https://i.loli.net/2020/07/17/iF628B4z1ydOsWk.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-07-16</div><div class="title">手把手从零开始搭建自己的个人博客</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="/img/avater.jpeg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Cody</div><div class="author-info__description">好少年光芒万丈</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ZhangZhenwen" target="_blank" title="Github"><i class="fab fa-github"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E7%B3%BB%E7%BB%9F%EF%BC%9A%E4%B8%80%E6%9D%A1-SQL-%E6%9B%B4%E6%96%B0%E8%AF%AD%E5%8F%A5%E6%98%AF%E5%A6%82%E4%BD%95%E6%89%A7%E8%A1%8C%E7%9A%84%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">日志系统：一条 SQL 更新语句是如何执行的？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E6%97%A5%E5%BF%97%E6%A8%A1%E5%9D%97%EF%BC%9Aredo-log-InnoDB"><span class="toc-number">1.1.</span> <span class="toc-text">重要日志模块：redo log (InnoDB)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E8%A6%81%E7%9A%84%E6%97%A5%E5%BF%97%E6%A8%A1%E5%9D%97%EF%BC%9Abinlog"><span class="toc-number">1.2.</span> <span class="toc-text">重要的日志模块：binlog</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%A4%E9%98%B6%E6%AE%B5%E6%8F%90%E4%BA%A4"><span class="toc-number">1.3.</span> <span class="toc-text">两阶段提交</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2020/07/25/%E5%8D%81%E5%A4%A7%E7%BB%8F%E5%85%B8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="十大经典排序算法"><img src="https://i.loli.net/2020/07/26/bwnM8dKmj6XL23c.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="十大经典排序算法"/></a><div class="content"><a class="title" href="/2020/07/25/%E5%8D%81%E5%A4%A7%E7%BB%8F%E5%85%B8%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" title="十大经典排序算法">十大经典排序算法</a><time datetime="2020-07-25T11:18:23.000Z" title="发表于 2020-07-25 19:18:23">2020-07-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/07/23/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" title="Linux 基础命令"><img src="https://i.loli.net/2020/07/25/7D8vxaQMlsbAYEZ.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Linux 基础命令"/></a><div class="content"><a class="title" href="/2020/07/23/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/" title="Linux 基础命令">Linux 基础命令</a><time datetime="2020-07-23T14:31:01.000Z" title="发表于 2020-07-23 22:31:01">2020-07-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/07/23/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="正则表达式"><img src="https://i.loli.net/2020/07/25/7D8vxaQMlsbAYEZ.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="正则表达式"/></a><div class="content"><a class="title" href="/2020/07/23/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" title="正则表达式">正则表达式</a><time datetime="2020-07-23T14:31:01.000Z" title="发表于 2020-07-23 22:31:01">2020-07-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/07/21/MySQL%E5%9F%BA%E7%A1%80%E7%AF%87-%E4%B8%89/" title="MySQL 基础篇(三)"><img src="https://i.loli.net/2020/07/25/KL1ZUSaCn3wJqrW.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL 基础篇(三)"/></a><div class="content"><a class="title" href="/2020/07/21/MySQL%E5%9F%BA%E7%A1%80%E7%AF%87-%E4%B8%89/" title="MySQL 基础篇(三)">MySQL 基础篇(三)</a><time datetime="2020-07-20T16:50:33.000Z" title="发表于 2020-07-21 00:50:33">2020-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2020/07/20/MySQL%E5%9F%BA%E7%A1%80%E7%AF%87-%E4%BA%8C/" title="MySQL 基础篇(二)"><img src="https://i.loli.net/2020/07/21/qvoFrfQGd6bzlxn.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MySQL 基础篇(二)"/></a><div class="content"><a class="title" href="/2020/07/20/MySQL%E5%9F%BA%E7%A1%80%E7%AF%87-%E4%BA%8C/" title="MySQL 基础篇(二)">MySQL 基础篇(二)</a><time datetime="2020-07-20T09:43:35.000Z" title="发表于 2020-07-20 17:43:35">2020-07-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By Cody</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a href="http://www.beian.miit.gov.cn" target="_blank">闽ICP备20014964号</a><br> <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=35012502000123" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"> <img src="/img/备案图标.png">闽公网安备 35012502000123号</p></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    let initData = {
+      el: '#vcomment',
+      appId: 'eIPnwzcAPKEgqX2PdYhNT8MQ-gzGzoHsz',
+      appKey: 'sfGDeDsrIX9MiTw9AQWkJBPu',
+      placeholder: 'Please leave your footprints',
+      avatar: 'monsterid',
+      meta: 'nick,mail,link'.split(','),
+      pageSize: '10',
+      lang: 'zh-CN',
+      recordIP: false,
+      serverURLs: '',
+      emojiCDN: '',
+      emojiMaps: "",
+      enableQQ: true,
+      path: window.location.pathname,
+    }
+
+    if (true) { 
+      initData.requiredFields= ('nick,mail'.split(','))
+    }
+    
+    if (false) {
+      const otherData = false
+      initData = Object.assign(initData, otherData)
+    }
+    
+    const valine = new Valine(initData)
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !false) {
+  if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
